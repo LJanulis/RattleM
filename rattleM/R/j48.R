@@ -34,6 +34,7 @@ executeModelJ48 <- function()
 	crs$j48$reducedError <- theWidget("reduced_error_pruning_checkbutton")$getActive()
 	crs$j48$subtreeRaising <- theWidget("raise_subtree_checkbutton")$getActive()
 	crs$j48$minBucket <- theWidget("min_instances_input")$getValue()
+	crs$j48$rules <- theWidget("c50_rules_checkbutton")$getActive()
 
 	if(theWidget("pruning_confidence_input")$getSensitive() == TRUE)
 		crs$j48$pruningConfidence <- theWidget("pruning_confidence_input")$getValue()
@@ -43,6 +44,7 @@ executeModelJ48 <- function()
 	logData();
 
 	trainDataset <- crs$dataset[crs$train, c(crs$input, crs$target)]
+	startTime <- Sys.time()
 	crs$j48$fit <- runJ48(classVar = as.character(crs$target), dataset = trainDataset, U_val = crs$j48$unpruned,
 																				  O_val = crs$j48$uncollapsed,
 																				  C_val = crs$j48$pruningConfidence,
@@ -52,6 +54,9 @@ executeModelJ48 <- function()
 																				  B_val = crs$j48$binSplit,
 																				  S_val = crs$j48$subtreeRaising,
 																				  J_val = crs$j48$mdl)
+	endTime <- Sys.time()
+	timeTaken <- as.numeric(endTime - startTime)
+	timeString <- paste(paste("Time: ", round(timeTaken, digits = 2),  sep = ""), "secs")																			  
 																	 
 	j48SummaryStr <- "summary(crs$j48$fit)"
 	j48FitStr <- "crs$j48$fit"	
@@ -63,7 +68,12 @@ executeModelJ48 <- function()
             "\n\n",
 			Rtxt("Summary of the created J48 decision tree:"), "\n\n",
 			paste(capture.output(eval(parse(text=j48SummaryStr))), collapse="\n"), 
+			"\n\n",
+			timeString,
 			"\n\n")
+	if(crs$j48$rules){
+		jripToRules(crs$j48$fit)
+	}
 			
 	theWidget("rpart_rules_button")$hide()
 	theWidget("rpart_plot_button")$show()
@@ -132,45 +142,59 @@ jripToRules <- function(fit){
   
   for(i in 1:length(treeText)){
     if(isRuleEnd(treeText[[i]])){
-      currRule <- treeText[[i]]
-      currRule <- gsub(":", " =>", currRule)
-      usedRuleDepths[length(usedRuleDepths) + 1] <- calculateDepth(treeText[[i]])
-      
-      for(j in i:newRuleStartIndex){
-        if(!isRuleEnd(treeText[[j]]) && !isNewRule(treeText[[j]])){
-          
-          currDepth <- calculateDepth(treeText[[j]])
-          
-          if(!(currDepth %in% usedRuleDepths)){
-            usedRuleDepths[length(usedRuleDepths) + 1] <- currDepth
-            currRule <- paste(treeText[[j]], currRule)
+      if(currRule == "" && isNewRule(treeText[[i]])){
+        singleRule <- treeText[[i]]
+        singleRule <- gsub(":", " =>", singleRule)
+        rules[[length(rules)+1]] <- singleRule
+      }
+      else{
+        currRule <- treeText[[i]]
+        currRule <- gsub(":", " =>", currRule)
+        usedRuleDepths[length(usedRuleDepths) + 1] <- calculateDepth(treeText[[i]])
+        
+        for(j in i:newRuleStartIndex){
+          if(!isRuleEnd(treeText[[j]]) && !isNewRule(treeText[[j]])){
+            
+            currDepth <- calculateDepth(treeText[[j]])
+            
+            if(!(currDepth %in% usedRuleDepths)){
+              usedRuleDepths[length(usedRuleDepths) + 1] <- currDepth
+              currRule <- paste(treeText[[j]], currRule)
+            }
           }
-        }
-        else if(isNewRule(treeText[[j]])){
-          newRuleStartIndex <- j
-          currRule <- paste(treeText[[j]], currRule)
-          rules[[length(rules)+1]] <- currRule
-          
-          currRule <- ""
-          usedRuleDepths <- c()
-          break
+          else if(isNewRule(treeText[[j]])){
+            newRuleStartIndex <- j
+            currRule <- paste(treeText[[j]], currRule)
+            rules[[length(rules)+1]] <- currRule
+            
+            currRule <- ""
+            usedRuleDepths <- c()
+            break
+          }
         }
       }
     }
   }
   
+  TV <- "dectrees_textview"
+  rulesSummary <- ""
   for(i in 1:length(rules)){
     rules[[i]] <- gsub("\\|", " ", rules[[i]])
     rules[[i]] <- gsub("     +", " AND ", rules[[i]])
     ruleSplit <- strsplit(rules[[i]], " AND ")
-    for(j in 2:length(ruleSplit[[1]])-1){
-      #print(ruleSplit[[1]][j])
-    }
-    consequentSplit <- strsplit(ruleSplit[[1]][length(ruleSplit[[1]])], "=>")
-    #print(consequentSplit[[1]][1])
-    #print(paste("             =>", consequentSplit[[1]][2]))
-    #print("")
+	ruleIndex <- paste("Rule number:", i)
+	rulesSummary <- paste(paste(rulesSummary, ruleIndex), "\n")
+	if(length(ruleSplit[[1]]) > 1){
+		for(j in 2:length(ruleSplit[[1]])-1){
+		 rulesSummary <- paste(paste(rulesSummary, ruleSplit[[1]][j]), "\n")
+		}
+	}
+	consequentSplit <- strsplit(ruleSplit[[1]][length(ruleSplit[[1]])], "=>")
+	rulesSummary <- paste(paste(rulesSummary, consequentSplit[[1]][1]), "\n")
+	rulesSummary <- paste(paste(rulesSummary, paste("             =>", consequentSplit[[1]][2]), "\n\n"))
   }
+  appendTextview(TV, Rtxt("C4.5 classification rules:"), "\n\n",
+			rulesSummary, "\n\n")
 }
 
 

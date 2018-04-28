@@ -144,7 +144,7 @@ on_use_unpruned_checkbutton_clicked <- function(button){
 
 on_model_tree_j48_radiobutton_toggled <- function(button){
 	theWidget("c50_subset_checkbutton")$setSensitive(FALSE)
-	theWidget("c50_rules_checkbutton")$setSensitive(FALSE)
+	#theWidget("c50_rules_checkbutton")$setSensitive(FALSE)
 	theWidget("c50_bands_input")$setSensitive(FALSE)
 	theWidget("c50_winnow_checkbutton")$setSensitive(FALSE)
 	theWidget("c50_noglobalpruning_checkbutton")$setSensitive(FALSE)
@@ -161,7 +161,7 @@ on_model_tree_j48_radiobutton_toggled <- function(button){
 
 on_model_tree_C50_radiobutton_toggled <- function(button){
 	theWidget("c50_subset_checkbutton")$setSensitive(TRUE)
-	theWidget("c50_rules_checkbutton")$setSensitive(TRUE)
+	#theWidget("c50_rules_checkbutton")$setSensitive(TRUE)
 	theWidget("c50_bands_input")$setSensitive(TRUE)
 	theWidget("c50_winnow_checkbutton")$setSensitive(TRUE)
 	theWidget("c50_noglobalpruning_checkbutton")$setSensitive(TRUE)

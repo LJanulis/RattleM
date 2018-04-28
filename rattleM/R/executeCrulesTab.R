@@ -18,11 +18,16 @@ executeCrulesTab <- function()
 	
 	#trainDataset <- crs$dataset[crs$train,]
 	trainDataset <- crs$dataset[crs$train, c(crs$input, crs$target)]
+	startTime <- Sys.time()
 	crs$crules$fit <- runJrip(classVar = as.character(crs$target), dataset = trainDataset, F_val = crs$crules$Mfolds, 
 																						   N_val = crs$crules$Mweight,
  																						   O_val = crs$crules$Mruns,
 																						   E_val = !crs$crules$MusePruning, 
 																						   P_val = !crs$crules$McheckError)
+	endTime <- Sys.time()
+	timeTaken <- as.numeric(endTime - startTime)
+	timeString <- paste(paste("Time: ", round(timeTaken, digits = 2),  sep = ""), "secs")
+	
 	rSummary <- "summary(crs$crules$fit)"
 	mRules <- "crs$crules$fit"
 	
@@ -33,6 +38,8 @@ executeCrulesTab <- function()
               "\n\n",
 			  Rtxt("Summary of the Classification Rules:"), "\n\n",
 			  paste(capture.output(eval(parse(text=rSummary))), collapse="\n"), 
+			  "\n\n",
+			  timeString,
 			  "\n\n")
 	
 	theWidget("evaluate_crules_checkbutton")$setActive(TRUE)
