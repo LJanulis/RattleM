@@ -560,4 +560,68 @@
   string to prefix your variables on exporting the Log.</tooltip>
 <tooltip widget="log_export_rename_entry">Choose the prefix to be used
   to identify internal variables when this Log is exported.</tooltip>
+
+<tooltip widget="explore_information_radiobutton"> Explore mutual information of dataset variables.
+</tooltip>
+
+<tooltip widget="crules_folds_input"> Set number of folds for REP.
+One fold is used as pruning set.
+</tooltip>
+<tooltip widget="crules_weights_input"> Set the minimal weights of instances within a split.
+</tooltip>
+<tooltip widget="crules_runs_input"> Set the number of runs of optimizations.
+</tooltip>
+<tooltip widget="crules_usepruning_checkbox"> Whether to use pruning.
+</tooltip>
+<tooltip widget="crules_checkerror_check"> Whether to check the error rate>=0.5 in stopping criteria
+</tooltip>
+<tooltip widget="crules_evalfolds_input"> Set the number of folds for cross validation.
+</tooltip>
+<tooltip widget="crules_evalseed_input"> Set random seed for cross validation.
+</tooltip>
+<tooltip widget="crules_evalseed_freqbutton"> Evaluate using cross validation on validation dataset.
+</tooltip>
+
+<tooltip widget="use_unpruned_checkbutton"> Use unpruned tree.
+</tooltip>
+<tooltip widget="dont_collapse_checkbutton"> Do not collapse tree.
+</tooltip>
+<tooltip widget="binary_splits_checkbutton"> Use binary splits only.
+</tooltip>
+<tooltip widget="mdl_checkbutton"> Use MDL correction for info gain on numeric attributes.
+</tooltip>
+<tooltip widget="raise_subtree_checkbutton"> Dont use subtree raising.
+</tooltip>
+<tooltip widget="pruning_confidence_input"> Set confidence threshold for pruning.
+</tooltip>
+<tooltip widget="min_instances_input"> Set minimum number of instances per leaf.
+</tooltip>
+<tooltip widget="reduced_error_pruning_checkbutton"> Use reduced error pruning.
+</tooltip>
+<tooltip widget="folds_input"> Set number of folds for reduced error pruning. 
+One fold is used as pruning set.
+</tooltip>
+  
+<tooltip widget="c50_subset_checkbutton"> Model will evaluate groups of discrete predictors for splits.
+</tooltip>
+<tooltip widget="c50_rules_checkbutton"> Generate classification rule model from tree.
+</tooltip>
+<tooltip widget="c50_bands_input"> Model orders rules by their affect on the error rate 
+and groups rules into specified number of bands.
+</tooltip>
+<tooltip widget="c50_winnow_checkbutton"> Use predictor Winnowing.
+</tooltip>
+<tooltip widget="c50_noglobalpruning_checkbutton"> Use final global pruning step to simplify the tree.
+</tooltip>
+<tooltip widget="c50_fuzzythreshold_checkbutton"> Evaluate possible advanced splits of numeric attributes.
+</tooltip>
+<tooltip widget="c50_sample_input"> A number between (0, 0.999) that specifies the random 
+proportion of the data used to train the model.
+</tooltip>
+<tooltip widget="c50_earlystopping_checkbutton"> Use internal method for stopping boosting.
+</tooltip>
+<tooltip widget="c50_boosting_input"> Number of boosting iterations. 
+A value of 1 means a single model is used
+</tooltip>
+  
 </rattleM-tooltips>
