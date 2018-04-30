@@ -22,10 +22,6 @@ checkRandJava <- function(){
   javaVers <- strsplit(javaInfo[3],split=' (build', fixed=TRUE)[[1]][1]
   rVersion <- R.version$arch
   
-  print(javaInfo)
-  print(javaVers)
-  print(rVersion)
-  
   if(identical(r32Bit, rVersion) && identical(j32Bit, javaVers)){
     return(TRUE)
   }
