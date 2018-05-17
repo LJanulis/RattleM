@@ -287,7 +287,7 @@ This tab is for model creation using landmark decision tree algorithms: C4.5 and
 
 Various parameters to alter selected algorithm are provided, capability to plot created models is also provided.
 
-Created C5.0 model can also be expressed as classification rule set.
+Created C4.5 and C5.0 models can also be expressed as classification rule set.
 
 </textview>	
 
