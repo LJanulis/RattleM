@@ -2311,8 +2311,8 @@ Contributions also from:
                           <object class="GtkFileChooserButton" id="data_corpus_location_filechooserbutton">
                             <property name="width_request">200</property>
                             <property name="visible">True</property>
-                            <property name="action">select-folder</property>
                             <property name="local_only">False</property>
+                            <property name="action">select-folder</property>
                             <property name="title" translatable="yes">Select A Folder</property>
                           </object>
                           <packing>

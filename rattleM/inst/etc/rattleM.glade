@@ -2250,7 +2250,7 @@
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
-                        <property name="position">5</property>
+                        <property name="position">3</property>
                       </packing>
                     </child>
                     <child>
@@ -2267,7 +2267,7 @@
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
-                        <property name="position">7</property>
+                        <property name="position">4</property>
                       </packing>
                     </child>
                     <child>
@@ -2282,7 +2282,22 @@
                       </widget>
                       <packing>
                         <property name="expand">False</property>
-                        <property name="position">8</property>
+                        <property name="position">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkRadioButton" id="explore_information_radiobutton">
+                        <property name="label" translatable="yes">Information</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                        <property name="group">summary_radiobutton</property>
+                        <signal name="toggled" handler="on_explore_mutualinformation_radiobutton_toggled"/>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="position">6</property>
                       </packing>
                     </child>
                   </widget>
@@ -3118,6 +3133,105 @@ Spearman</property>
                           </widget>
                           <packing>
                             <property name="position">4</property>
+                            <property name="tab_fill">False</property>
+                            <property name="type">tab</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkVBox" id="vbox39">
+                            <property name="visible">True</property>
+                            <property name="orientation">vertical</property>
+                            <child>
+                              <widget class="GtkHBox" id="hbox48">
+                                <property name="visible">True</property>
+                                <property name="spacing">5</property>
+                                <child>
+                                  <widget class="GtkLabel" id="label5">
+                                    <property name="visible">True</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <widget class="GtkLabel" id="information_label">
+                                    <property name="visible">True</property>
+                                    <property name="label" translatable="yes">Target variable:   </property>
+                                  </widget>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">False</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <widget class="GtkComboBox" id="information_combobox">
+                                    <property name="width_request">150</property>
+                                    <property name="height_request">20</property>
+                                    <property name="events"></property>
+                                    <property name="items" translatable="yes">No data frames yet loaded.</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">False</property>
+                                    <property name="position">2</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <widget class="GtkButton" id="information_plotbutton">
+                                    <property name="label" translatable="yes">Plot</property>
+                                    <property name="width_request">50</property>
+                                    <property name="height_request">0</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">True</property>
+                                    <signal name="clicked" handler="on_information_plotbutton_clicked"/>
+                                  </widget>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">False</property>
+                                    <property name="padding">20</property>
+                                    <property name="position">3</property>
+                                  </packing>
+                                </child>
+                              </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="padding">2</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkScrolledWindow" id="scrolledwindow20">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="shadow_type">in</property>
+                                <child>
+                                  <widget class="GtkTextView" id="information_textview">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="wrap_mode">word</property>
+                                  </widget>
+                                </child>
+                              </widget>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </widget>
+                          <packing>
+                            <property name="position">5</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="explore_information_tab_label">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">Information</property>
+                          </widget>
+                          <packing>
+                            <property name="position">5</property>
                             <property name="tab_fill">False</property>
                             <property name="type">tab</property>
                           </packing>
@@ -5149,6 +5263,8 @@ centroid</property>
               </widget>
               <packing>
                 <property name="position">5</property>
+                <property name="reorderable">True</property>
+                <property name="detachable">True</property>
               </packing>
             </child>
             <child>
@@ -5428,21 +5544,7 @@ centroid</property>
                                   </packing>
                                 </child>
                                 <child>
-                                  <widget class="GtkRadioButton" id="model_tree_j48_radiobutton">
-                                    <property name="label" translatable="yes">C4.5</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
-                                    <property name="active">True</property>
-                                    <property name="draw_indicator">True</property>
-                                    <property name="group">model_tree_rpart_radiobutton</property>
-                                    <signal name="toggled" handler="on_model_tree_j48_radiobutton_toggled"/>
-                                  </widget>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">False</property>
-                                    <property name="position">4</property>
-                                  </packing>
+                                  <placeholder/>
                                 </child>
                                 <child>
                                   <widget class="GtkLabel" id="model_tree_rpart_weights_label">
@@ -5821,177 +5923,6 @@ centroid</property>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
                                 <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <widget class="GtkHBox" id="hbox48">
-                                <property name="visible">True</property>
-                                <property name="spacing">3</property>
-                                <child>
-                                  <widget class="GtkCheckButton" id="use_unpruned_checkbutton">
-                                    <property name="label" translatable="yes">Unpruned</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
-                                    <property name="xalign">0.52999997138977051</property>
-                                    <property name="draw_indicator">True</property>
-                                    <signal name="clicked" handler="on_use_unpruned_checkbutton_clicked"/>
-                                  </widget>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">False</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <widget class="GtkCheckButton" id="dont_collapse_checkbutton">
-                                    <property name="label" translatable="yes">Uncollapsed</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
-                                    <property name="draw_indicator">True</property>
-                                  </widget>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">False</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <widget class="GtkCheckButton" id="binary_splits_checkbutton">
-                                    <property name="label" translatable="yes">Binary Split </property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
-                                    <property name="draw_indicator">True</property>
-                                  </widget>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">False</property>
-                                    <property name="position">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <widget class="GtkCheckButton" id="mdl_checkbutton">
-                                    <property name="label" translatable="yes">MDL </property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
-                                    <property name="draw_indicator">True</property>
-                                  </widget>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">False</property>
-                                    <property name="position">3</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <widget class="GtkCheckButton" id="raise_subtree_checkbutton">
-                                    <property name="label" translatable="yes">Dont Raise Subtree </property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
-                                    <property name="draw_indicator">True</property>
-                                  </widget>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">False</property>
-                                    <property name="position">4</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <widget class="GtkLabel" id="pruning_confidence_label">
-                                    <property name="visible">True</property>
-                                    <property name="label" translatable="yes">Pruning Confidence:   </property>
-                                  </widget>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="position">5</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <widget class="GtkSpinButton" id="pruning_confidence_input">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="invisible_char">&#x25CF;</property>
-                                    <property name="adjustment">0.24999999999999994 0 100 0.01 10 10</property>
-                                    <property name="climb_rate">0.01</property>
-                                    <property name="digits">2</property>
-                                  </widget>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="position">6</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <widget class="GtkLabel" id="min_instances_label">
-                                    <property name="visible">True</property>
-                                    <property name="label" translatable="yes"> Min. Bucket:   </property>
-                                  </widget>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">False</property>
-                                    <property name="position">7</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <widget class="GtkSpinButton" id="min_instances_input">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="invisible_char">&#x25CF;</property>
-                                    <property name="adjustment">2 1 10000 1 10 0</property>
-                                    <property name="climb_rate">1</property>
-                                  </widget>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">False</property>
-                                    <property name="position">8</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <widget class="GtkCheckButton" id="reduced_error_pruning_checkbutton">
-                                    <property name="label" translatable="yes">Reduced Error Pruning   </property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
-                                    <property name="draw_indicator">True</property>
-                                    <signal name="clicked" handler="on_j48_REP_checkbutton_clicked"/>
-                                  </widget>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">False</property>
-                                    <property name="position">9</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <widget class="GtkLabel" id="folds_label">
-                                    <property name="visible">True</property>
-                                    <property name="label" translatable="yes"> Number of Folds:   </property>
-                                  </widget>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">False</property>
-                                    <property name="position">10</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <widget class="GtkSpinButton" id="folds_input">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="invisible_char">&#x25CF;</property>
-                                    <property name="adjustment">3 1 10000 1 10 0</property>
-                                    <property name="climb_rate">1</property>
-                                  </widget>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">False</property>
-                                    <property name="position">11</property>
-                                  </packing>
-                                </child>
-                              </widget>
-                              <packing>
-                                <property name="padding">2</property>
-                                <property name="position">2</property>
                               </packing>
                             </child>
                           </widget>
@@ -7712,6 +7643,8 @@ Spline (splinedot)</property>
               </widget>
               <packing>
                 <property name="position">6</property>
+                <property name="reorderable">True</property>
+                <property name="detachable">True</property>
               </packing>
             </child>
             <child>
@@ -8127,6 +8060,36 @@ Spline (splinedot)</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="position">11</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkCheckButton" id="evaluate_j48_checkbutton">
+                        <property name="label" translatable="yes">J48</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_evaluate_model_checkbutton_toggled"/>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="position">12</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkCheckButton" id="evaluate_c50_checkbutton">
+                        <property name="label" translatable="yes">C5.0</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_evaluate_model_checkbutton_toggled"/>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="position">13</property>
                       </packing>
                     </child>
                   </widget>
@@ -8750,7 +8713,9 @@ Spline (splinedot)</property>
                 </child>
               </widget>
               <packing>
-                <property name="position">7</property>
+                <property name="position">9</property>
+                <property name="reorderable">True</property>
+                <property name="detachable">True</property>
               </packing>
             </child>
             <child>
@@ -8841,7 +8806,9 @@ Spline (splinedot)</property>
                 </child>
               </widget>
               <packing>
-                <property name="position">8</property>
+                <property name="position">10</property>
+                <property name="reorderable">True</property>
+                <property name="detachable">True</property>
               </packing>
             </child>
             <child>
@@ -8944,42 +8911,19 @@ Spline (splinedot)</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkLabel" id="crules_seed_label">
-                            <property name="visible">True</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes">  Seed:</property>
-                          </widget>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">False</property>
-                            <property name="position">6</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkSpinButton" id="crules_seed_input">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="invisible_char">&#x25CF;</property>
-                            <property name="climb_rate">1</property>
-                          </widget>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="position">7</property>
-                          </packing>
-                        </child>
-                        <child>
                           <widget class="GtkCheckButton" id="crules_usepruning_checkbox">
                             <property name="label" translatable="yes">  Use Pruning</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
+                            <property name="xalign">0.46000000834465027</property>
                             <property name="active">True</property>
                             <property name="draw_indicator">True</property>
                           </widget>
                           <packing>
                             <property name="expand">False</property>
                             <property name="padding">4</property>
-                            <property name="position">8</property>
+                            <property name="position">6</property>
                           </packing>
                         </child>
                         <child>
@@ -8993,7 +8937,7 @@ Spline (splinedot)</property>
                           </widget>
                           <packing>
                             <property name="expand">False</property>
-                            <property name="position">9</property>
+                            <property name="position">7</property>
                           </packing>
                         </child>
                       </widget>
@@ -9097,7 +9041,7 @@ Spline (splinedot)</property>
                   <widget class="GtkScrolledWindow" id="scrolledwindow13">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="vadjustment">0 0 229 22.900000000000002 206.09999999999999 229</property>
+                    <property name="vadjustment">0 0 230 23 207 230</property>
                     <property name="hscrollbar_policy">never</property>
                     <property name="shadow_type">in</property>
                     <child>
@@ -9117,6 +9061,8 @@ Spline (splinedot)</property>
               </widget>
               <packing>
                 <property name="position">9</property>
+                <property name="reorderable">True</property>
+                <property name="detachable">True</property>
               </packing>
             </child>
             <child>
@@ -9127,6 +9073,464 @@ Spline (splinedot)</property>
               <packing>
                 <property name="position">9</property>
                 <property name="tab_fill">False</property>
+                <property name="reorderable">True</property>
+                <property name="detachable">True</property>
+                <property name="type">tab</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkVBox" id="dectrees_tab_widget">
+                <property name="visible">True</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <widget class="GtkVBox" id="vbox40">
+                    <property name="visible">True</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">5</property>
+                    <child>
+                      <widget class="GtkHBox" id="hbox53">
+                        <property name="visible">True</property>
+                        <property name="spacing">10</property>
+                        <child>
+                          <widget class="GtkRadioButton" id="model_tree_C50_radiobutton">
+                            <property name="label" translatable="yes">C5.0</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="active">True</property>
+                            <property name="draw_indicator">True</property>
+                            <signal name="toggled" handler="on_model_tree_C50_radiobutton_toggled"/>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkRadioButton" id="model_tree_j48_radiobutton">
+                            <property name="label" translatable="yes">C4.5</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="draw_indicator">True</property>
+                            <property name="group">model_tree_C50_radiobutton</property>
+                            <signal name="toggled" handler="on_model_tree_j48_radiobutton_toggled"/>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkButton" id="model_tree_drawbutton">
+                            <property name="label" translatable="yes">  Draw Tree   </property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <signal name="clicked" handler="on_model_tree_drawbutton_clicked"/>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkHBox" id="hbox54">
+                        <property name="visible">True</property>
+                        <property name="spacing">3</property>
+                        <child>
+                          <widget class="GtkCheckButton" id="use_unpruned_checkbutton">
+                            <property name="label" translatable="yes">Unpruned</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="xalign">0.52999997138977051</property>
+                            <property name="draw_indicator">True</property>
+                            <signal name="clicked" handler="on_use_unpruned_checkbutton_clicked"/>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkCheckButton" id="dont_collapse_checkbutton">
+                            <property name="label" translatable="yes">Uncollapsed</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="draw_indicator">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkCheckButton" id="binary_splits_checkbutton">
+                            <property name="label" translatable="yes">Binary Split </property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="draw_indicator">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkCheckButton" id="mdl_checkbutton">
+                            <property name="label" translatable="yes">MDL </property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="draw_indicator">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">3</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkCheckButton" id="raise_subtree_checkbutton">
+                            <property name="label" translatable="yes">Dont Raise Subtree </property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="draw_indicator">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">4</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="pruning_confidence_label">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">Pruning Confidence:   </property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">5</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkSpinButton" id="pruning_confidence_input">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="climb_rate">0.01</property>
+                            <property name="digits">2</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">6</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="min_instances_label">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes"> Min. Bucket:   </property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">7</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkSpinButton" id="min_instances_input">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="primary_icon_sensitive">True</property>
+                            <property name="secondary_icon_sensitive">True</property>
+                            <property name="adjustment">0 0 1000000 1 10 0</property>
+                            <property name="climb_rate">1</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">8</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkCheckButton" id="reduced_error_pruning_checkbutton">
+                            <property name="label" translatable="yes">Reduced Error Pruning   </property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="draw_indicator">True</property>
+                            <signal name="clicked" handler="on_j48_REP_checkbutton_clicked"/>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">9</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="folds_label">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes"> Number of Folds:   </property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">10</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkSpinButton" id="folds_input">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="primary_icon_sensitive">True</property>
+                            <property name="secondary_icon_sensitive">True</property>
+                            <property name="adjustment">0 0 1000000 1 10 0</property>
+                            <property name="climb_rate">1</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">11</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="padding">2</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkHBox" id="hbox55">
+                        <property name="visible">True</property>
+                        <property name="spacing">5</property>
+                        <child>
+                          <widget class="GtkCheckButton" id="c50_subset_checkbutton">
+                            <property name="label" translatable="yes">Subset</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="draw_indicator">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkCheckButton" id="c50_rules_checkbutton">
+                            <property name="label" translatable="yes">Rules</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="draw_indicator">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="c50_bands_label">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">Bands: </property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkSpinButton" id="c50_bands_input">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="primary_icon_sensitive">True</property>
+                            <property name="secondary_icon_sensitive">True</property>
+                            <property name="adjustment">0 0 1000000 1 10 0</property>
+                            <property name="climb_rate">1</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">3</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkCheckButton" id="c50_winnow_checkbutton">
+                            <property name="label" translatable="yes">Winnow</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="draw_indicator">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">4</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkCheckButton" id="c50_noglobalpruning_checkbutton">
+                            <property name="label" translatable="yes">No Global Pruning</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="draw_indicator">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">5</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkCheckButton" id="c50_fuzzythreshold_checkbutton">
+                            <property name="label" translatable="yes">Fuzzy Threshold</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="draw_indicator">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">6</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="c50_sample_label">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">Sample:  </property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">7</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkSpinButton" id="c50_sample_input">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="primary_icon_sensitive">True</property>
+                            <property name="secondary_icon_sensitive">True</property>
+                            <property name="adjustment">0 0 1000000 1 10 0</property>
+                            <property name="climb_rate">0.01</property>
+                            <property name="digits">2</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">8</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkCheckButton" id="c50_earlystopping_checkbutton">
+                            <property name="label" translatable="yes">Early Stopping</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="draw_indicator">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">9</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="c50_boosting_label">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">Boosting trials: </property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">10</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkSpinButton" id="c50_boosting_input">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="primary_icon_sensitive">True</property>
+                            <property name="secondary_icon_sensitive">True</property>
+                            <property name="adjustment">0 0 1000000 1 10 0</property>
+                            <property name="climb_rate">1</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">11</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkScrolledWindow" id="scrolledwindow22">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="hscrollbar_policy">automatic</property>
+                    <property name="shadow_type">in</property>
+                    <child>
+                      <widget class="GtkTextView" id="dectrees_textview">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="pixels_above_lines">1</property>
+                        <property name="editable">False</property>
+                        <property name="wrap_mode">char</property>
+                        <property name="left_margin">3</property>
+                      </widget>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="position">10</property>
+                <property name="reorderable">True</property>
+                <property name="detachable">True</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkLabel" id="dectrees_tab_label">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">DecTrees</property>
+              </widget>
+              <packing>
+                <property name="position">10</property>
+                <property name="tab_fill">False</property>
+                <property name="reorderable">True</property>
+                <property name="detachable">True</property>
                 <property name="type">tab</property>
               </packing>
             </child>
